@@ -39,31 +39,37 @@ export default function validateRegistrationForm(formValues) {
 
 // must be longer than 3 chars.  Use a regular expression.
 function validateUserName(name) {
+  const ValidUser= /\w{3,}/;
   return true;
 }
 
 // must be a valid email address.  Use a regular expression
 function validateEmail(email) {
-  true;
+  const pattern= /^\w[-._\w]*\w@\w[-._\w]*\w\.\w{2,8}$/;
+ return true;
 }
 
 // must be a valid 10 digit phone number.  Use a regular expression
 function validatePhone(phone) {
+  const pattern= /^\d{3}[\s.\-]?\d{3}[\s.\-]?\d{4}$/;
   return true;
 }
 
 // must be between 10 and 25 inclusive.  Use a regular expression
 // to make sure that the age is a 2 digit number before checking the range.
 function validateAge(age) {
+  
+  const validAge = /\d[10-25]/;
   return true;
 }
 
-// must be either school, college, trainee or employee.  No reg exp.
+// must be either school, college, trainee or employee.  No reg exp. T.T just regular js code? confused. 
 function validateProfession(profession) {
   return true;
 }
 
 // must be between 0 and 4 years exclusive.  Use a regular expression.
 function validateExperience(experience) {
+const validYears= /\d[0-4]/;
   return true;
 }

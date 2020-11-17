@@ -11,28 +11,30 @@ class Home {
   constructor() {
     /* Part 2 - Finish the constructor
        - Add references to each of these elements on the page
-          this.$form = 
-          this.$username = 
-          this.$email = 
-          this.$phone = 
-          this.$age = 
-          this.$profession = 
-          this.$experience = 
-          this.$comment = 
-          this.$submit = 
-          this.$loadingIndicator = 
       - Add a sumbit handler to the form that calls onFormSubmit
         - You don't actually want to submit the form so you'll have to 
           prevent the default behavior on the event when it fires.
           That means that you'll need the event as a parameter to onFormSubmit
     */
-  }
+   this.$form = 
+          this.$username = document.querySelector('#username');
+          this.$email = document.querySelector('#email');
+          this.$phone = document.querySelector('#phone');
+          this.$age = document.querySelector('#age');
+          this.$profession = document.querySelector('#profession');
+          this.$experience = document.querySelector('#experience');
+          this.$comment = document.querySelector('#comment');
+          this.$submit = document.querySelector('#submit');
+          this.$loadingIndicator = document.querySelector('#loadingIndicator');
+          this.$form.addEventListener('submit',event =>{this.onFormSubmit(event);
+          });
+        }
 
   /* Part 3 - Write the first version of onFormSubmit */
   onFormSubmit(event) {
     // make sure the form is not submitted
     // get the values from the form and store in a variable
-
+  
     /* call the validateRegistrationForm method 
        pass variable from line above as a parameter.
        It will return an object that you should store in a varable
@@ -47,6 +49,17 @@ class Home {
     //    clear all of the errors
     //    highlight the errors
     // end if
+    event.preventDefault();
+    const formValues = this.getFormValues();
+    const formStatus = validateRegistrationForm(formValues);
+    if(formStatus.isValid){
+      this.clearErrors();
+      this.submitForm(formValues);
+
+    }else{
+      this.clearErrors();
+      this.highlightErrors(formStatus.result);
+    }
   }
 
   /* Part 4 - Finish these 4 UI related methods */
