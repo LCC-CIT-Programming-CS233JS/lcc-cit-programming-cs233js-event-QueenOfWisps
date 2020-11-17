@@ -70,13 +70,13 @@ class Home {
   */
   getFormValues() {
     return {
-      username: "",
-      email: "",
-      phone: "",
-      age: "",
-      profession: "",
+      username: this.username.value,
+      email: this.email.value,
+      phone: this.phone.value,
+      age: this.age.value,
+      profession: this.profession.value,
       experience: parseInt(document.querySelector('input[name="experience"]:checked').value),
-      comment: "",
+      comment: this.comment.value,
     };
   }
 
@@ -85,8 +85,13 @@ class Home {
   */
   resetForm() {
     this.$username.value = '';
-    this.$profession.value = 'school';
+    this.$email.value = '';
+    this.$phone.value = '';
+    this.$age.value = '';
+    this.$age.value = '';
+    this.$profession.value = '';
     this.$experience.checked = true;
+    this.$comment.value='';
   }
 
   /* This method styles each of the form fields that contains an error.
@@ -96,6 +101,24 @@ class Home {
     if(!result.username) {
       this.$username.parentElement.classList.add('has-error');
     }
+    if(!result.username) {
+      this.$phone.parentElement.classList.add('has-error');
+    }
+    if(!result.username) {
+      this.$email.parentElement.classList.add('has-error');
+    }
+    if(!result.username) {
+      this.$age.parentElement.classList.add('has-error');
+    }
+    if(!result.username) {
+      this.$profession.parentElement.classList.add('has-error');
+    }
+    if(!result.username) {
+      this.$experience.parentElement.classList.add('has-error');
+    }
+    if(!result.username) {
+      this.$comment.parentElement.classList.add('has-error');
+    }
   }
 
   /* This method removes the style for errors from all form fields.
@@ -103,8 +126,12 @@ class Home {
   */
   clearErrors() {
     this.$username.parentElement.classList.remove('has-error');
+    this.$phone.parentElement.classList.remove('has-error');
+    this.$email.parentElement.classList.remove('has-error');
+    this.$age.parentElement.classList.remove('has-error');
+    this.$profession.parentElement.classList.remove('has-error');
+    this.$experience.parentElement.classList.remove('has-error');
   }
-
   /* TEST - Instantiate a Home object at bottom of file first */
 
   /* Part 5 - Check out the ajax module in services/api/apiCall.js */
@@ -133,4 +160,4 @@ class Home {
 
 // add a window onload handler. 
 // It should create an (unnamed) instance of the class for this page
-
+window.onload= () =>{new Home();}
