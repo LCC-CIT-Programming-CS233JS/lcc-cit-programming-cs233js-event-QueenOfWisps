@@ -6,6 +6,9 @@ import apiCall from './services/api/apiCall';
 
 import toastr from 'toastr';
 import '../../node_modules/toastr/toastr.less';
+import { create } from 'lodash';
+import * as navbarLib from './display.js';
+
 
 class Home {
   constructor() {
@@ -16,6 +19,7 @@ class Home {
           prevent the default behavior on the event when it fires.
           That means that you'll need the event as a parameter to onFormSubmit
     */
+  
    this.$form = 
           this.$username = document.querySelector('#username');
           this.$email = document.querySelector('#email');
@@ -28,7 +32,10 @@ class Home {
           this.$loadingIndicator = document.querySelector('#loadingIndicator');
           this.$form.addEventListener('submit',event =>{this.onFormSubmit(event);
           });
+      
         }
+
+  
 
   /* Part 3 - Write the first version of onFormSubmit */
   onFormSubmit(event) {
@@ -83,6 +90,7 @@ class Home {
   /* This method clears each of the form fields.
      It gets called after the form is submitted successfully.
   */
+ 
   resetForm() {
     this.$username.value = '';
     this.$email.value = '';
@@ -160,4 +168,12 @@ class Home {
 
 // add a window onload handler. 
 // It should create an (unnamed) instance of the class for this page
+//waits for event to load, when loadedx it loads in the template from the library display.js
+// sets the innerhtml to the template. 
+
+window.addEventListener('load', () => {
+  let template = navbarLib.createNavBarTwo();
+  document.getElementById("navBar").innerHTML=template;
+  document.getElementById("home").classList.add("active");
+ });
 window.onload= () =>{new Home();}
