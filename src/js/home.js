@@ -20,7 +20,7 @@ class Home {
           That means that you'll need the event as a parameter to onFormSubmit
     */
   
-   this.$form = 
+          this.$form = document.getElementById("registrationForm");
           this.$username = document.querySelector('#username');
           this.$email = document.querySelector('#email');
           this.$phone = document.querySelector('#phone');
@@ -32,7 +32,8 @@ class Home {
           this.$loadingIndicator = document.querySelector('#loadingIndicator');
           this.$form.addEventListener('submit',event =>{this.onFormSubmit(event);
           });
-      
+          
+        
         }
 
   
@@ -172,8 +173,10 @@ class Home {
 // sets the innerhtml to the template. 
 
 window.addEventListener('load', () => {
+  new Home();
   let template = navbarLib.createNavBarTwo();
   document.getElementById("navBar").innerHTML=template;
   document.getElementById("home").classList.add("active");
  });
-window.onload= () =>{new Home();}
+//window.onload= () =>{new Home();}
+//this is not best practice. 
